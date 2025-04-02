@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 # 1. Comprobamos si somos root
 if [ "$EUID" -ne 0 ]; then
   echo "Este script debe ejecutarse como root."
