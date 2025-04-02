@@ -1,0 +1,41 @@
+services:
+  caddy:
+    image: caddy:latest
+    restart: always
+    links:
+      - n8n
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      - CADDY_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
+      - CADDY_EMAIL=${SSL_EMAIL}
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+      - $PWD/caddy_config:/etc/caddy
+
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    restart: always
+    expose:
+      - "5678"
+    environment:
+      - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - NODE_ENV=production
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - $PWD/local_files:/files
+
+volumes:
+  caddy_data:
+  caddy_config:
+  n8n_data:

@@ -1,0 +1,13 @@
+{
+	email {$CADDY_EMAIL}
+}
+
+{$CADDY_HOST} {
+	reverse_proxy n8n:5678 {
+		flush_interval -1
+	}
+
+	header {
+		-Server
+	}
+}
