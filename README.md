@@ -56,7 +56,7 @@ Hemos creado un script instalador para sistemas **Debian 12 o superior**, que:
 
 ```bash
 apt update && apt install -y lsb-release apt-transport-https ca-certificates curl
-wget -O install_debian.sh https://raw.githubusercontent.com/RaiolaNetworks/n8n-docker-caddy/main/install_debian.sh
+wget -O install_debian.sh https://raiola.link/install_n8n-docker-caddy
 chmod +x install_debian.sh
 bash install_debian.sh
 ```
