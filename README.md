@@ -55,9 +55,10 @@ Hemos creado un script instalador para sistemas **Debian 12 o superior**, que:
 #### ✅ Para usar el instalador:
 
 ```bash
-apt update
-apt install -y lsb-release apt-transport-https ca-certificates curl
-curl -fsSL https://raw.githubusercontent.com/RaiolaNetworks/n8n-docker-caddy/main/install_debian.sh | bash
+apt update && apt install -y lsb-release apt-transport-https ca-certificates curl
+wget https://raw.githubusercontent.com/RaiolaNetworks/n8n-docker-caddy/main/install_debian.sh
+chmod +x install_debian.sh
+bash install_debian.sh
 ```
 
 Una vez finalizado, simplemente accede a la carpeta e inicia los contenedores:

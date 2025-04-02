@@ -19,9 +19,9 @@ if [ "$DEBIAN_VERSION" -lt 12 ]; then
 fi
 
 # 3. Pedimos dominio, subdominio y email
-read -r -p "Introduce el dominio (ejemplo: ejemplo.com): " DOMINIO
-read -r -p "Introduce el subdominio (ejemplo: n8n): " SUBDOMINIO
-read -r -p "Introduce tu email para SSL (ejemplo: user@dominio.com): " EMAIL
+read -rp "Introduce el dominio (ejemplo: ejemplo.com): " DOMINIO
+read -rp "Introduce el subdominio (ejemplo: n8n): " SUBDOMINIO
+read -rp "Introduce tu email para SSL (ejemplo: user@dominio.com): " EMAIL
 
 # 4. Instalamos dependencias
 apt update
